@@ -7,6 +7,6 @@ if __name__ == "__main__":
 
     edge_list = input_file_text.split("\n")
     for edge in edge_list:
-        edge_tail, edge_head = edge.strip().split("->")
+        edge_tail, edge_head = edge.replace(" ", "").split("->")
         print(edge_tail)
         print(edge_head)
