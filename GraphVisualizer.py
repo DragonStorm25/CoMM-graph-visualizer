@@ -30,8 +30,13 @@ class GraphVisualizer:
             Redraw the graph. Also updates the axis variable
             """
             # Clear axis and grab new axis
+            old_view_lim = plt.gca().viewLim
+            old_view_lim_x = [old_view_lim.x0, old_view_lim.x1]
+            old_view_lim_y = [old_view_lim.y0, old_view_lim.y1]
             plt.cla()
             ax = plt.gca()
+            ax.set_xlim(old_view_lim_x)
+            ax.set_ylim(old_view_lim_y)
             # Set colors of nodes depending on highlight state
             colors = ['#cc6666' if node_name in self.highlighted_nodes else '#6666cc' for node_name in list(G.nodes)]
             # Draw graph
