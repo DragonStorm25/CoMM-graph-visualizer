@@ -49,23 +49,21 @@ class GraphVisualizer:
             if event.inaxes == ax:
                 cont, ind = nodes.contains(event)
                 if cont:
-                    update_annot(ind)
-                    annot.set_visible(True)
-                    fig.canvas.draw_idle()
-
                     node_name = list(G.nodes())[ind["ind"][0]]
                     connected_nodes = nx.generators.ego_graph(G, node_name, radius=1).nodes()
                     if self.highlighted_nodes != set(connected_nodes):
                         self.highlighted_nodes = set(connected_nodes)
                         redraw()
+
+                    update_annot(ind)
+                    annot.set_visible(True)
                         
                 else:
                     if vis:
-                        annot.set_visible(False)
-                        fig.canvas.draw_idle()
                         if self.highlighted_nodes != set():
                             self.highlighted_nodes = set()
                             redraw()
+                        annot.set_visible(False)
 
         fig.canvas.mpl_connect("motion_notify_event", hover)
         plt.show()
