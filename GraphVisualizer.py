@@ -94,15 +94,13 @@ class GraphVisualizer:
                         annot.set_visible(False)
 
         def click(event):
-            vis = annot.get_visible()
             if event.inaxes == ax:
                 cont, ind = nodes.contains(event)
                 if cont: # If mouse is over a node, 
                     node_name = list(G.nodes())[ind["ind"][0]]
                     print("click " + node_name)
                 else: # Otherwise, 
-                    if vis:
-                        print("click empty")
+                    print("click empty")
 
         # Add hover event to canvas
         fig.canvas.mpl_connect("motion_notify_event", hover)
