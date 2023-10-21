@@ -13,7 +13,8 @@ class GraphVisualization:
     def visualize(self): 
         G = nx.DiGraph() 
         G.add_edges_from(self.visual) 
-        nx.draw_kamada_kawai(G, with_labels=True) 
+        pos = nx.spring_layout(G, scale=2)
+        nx.draw(G, pos, with_labels=True)
         plt.show() 
 
 if __name__ == "__main__":
