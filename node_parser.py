@@ -20,7 +20,7 @@ class GraphVisualization:
         circle_pos = nx.circular_layout(G)
         pos = nx.arf_layout(G, pos=circle_pos, a=5)
         fig,ax = plt.subplots() 
-        nodes = nx.draw_networkx_nodes(G, pos, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax)
+        nodes = nx.draw(G, pos, with_labels=True, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax)
         annot = ax.annotate("", xy=(0,0), xytext=(20,20),textcoords="offset points",
                     bbox=dict(boxstyle="round", fc="w"),
                     arrowprops=dict(arrowstyle="->"))
