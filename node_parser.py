@@ -13,7 +13,8 @@ class GraphVisualization:
     def visualize(self): 
         G = nx.DiGraph() 
         G.add_edges_from(self.visual) 
-        pos = nx.arf_layout(G, a=5)
+        circle_pos = nx.circular_layout(G)
+        pos = nx.arf_layout(G, pos=circle_pos, a=5)
         nx.draw(G, pos, with_labels=True, node_size=[len(v) ** 2 * 60 for v in G.nodes()])
         plt.show() 
 
