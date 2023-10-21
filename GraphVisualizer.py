@@ -16,7 +16,7 @@ class GraphVisualizer:
         self.labels[a] = label_text
 
     def visualize(self): 
-        def update_colors():
+        def redraw():
             plt.cla()
             colors = ['red' if node_name in self.highlighted_nodes else 'blue' for node_name in list(G.nodes)]
             print(self.highlighted_nodes)
@@ -29,7 +29,7 @@ class GraphVisualizer:
         pos = nx.arf_layout(G, pos=circle_pos, a=5)
         fig,ax = plt.subplots() 
         nodes = nx.draw_networkx_nodes(G, pos=pos, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax)
-        update_colors()
+        redraw()
         annot = ax.annotate("", xy=(0,0), xytext=(20,20),textcoords="offset points",
                     bbox=dict(boxstyle="round", fc="w"),
                     arrowprops=dict(arrowstyle="->"))
@@ -58,7 +58,7 @@ class GraphVisualizer:
                     connected_nodes = nx.generators.ego_graph(G, node_name, radius=1).nodes()
                     if self.highlighted_nodes != set(connected_nodes):
                         self.highlighted_nodes = set(connected_nodes)
-                        update_colors()
+                        redraw()
                         
                 else:
                     if vis:
@@ -66,7 +66,7 @@ class GraphVisualizer:
                         fig.canvas.draw_idle()
                         if self.highlighted_nodes != set():
                             self.highlighted_nodes = set()
-                            update_colors()
+                            redraw()
 
         fig.canvas.mpl_connect("motion_notify_event", hover)
         plt.show()
