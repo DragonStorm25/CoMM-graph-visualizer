@@ -38,7 +38,7 @@ class GraphVisualizer:
             ax.set_xlim(old_view_lim_x)
             ax.set_ylim(old_view_lim_y)
             # Set colors of nodes depending on highlight state
-            colors = ['#cc6666' if node_name in self.highlighted_nodes else '#6666cc' for node_name in list(G.nodes)]
+            colors = ['#cc6666' if node_name in self.highlighted_nodes else '#6666cc99' for node_name in list(G.nodes)]
             # Draw graph
             nx.draw(G, pos, node_color=colors, with_labels=True, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax, edgecolors="#000000")
             plt.draw()
