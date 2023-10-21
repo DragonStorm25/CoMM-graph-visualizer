@@ -104,8 +104,11 @@ class GraphVisualizer:
                 if cont: # If mouse is over a node, 
                     node_name = list(G.nodes())[ind["ind"][0]]
                     self.selected = node_name
+                    self.highlighted_nodes |= set(nx.generators.ego_graph(G, self.selected, radius=1).nodes())
                 else: # Otherwise, 
                     self.selected = None
+                    self.highlighted_nodes = set()
+                redraw()
 
         # Add hover event to canvas
         fig.canvas.mpl_connect("motion_notify_event", hover)
