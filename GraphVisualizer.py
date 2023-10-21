@@ -78,9 +78,11 @@ class GraphVisualizer:
                 cont, ind = nodes.contains(event)
                 if cont: # If mouse is over a node, draw highlights and tooltip
                     node_name = list(G.nodes())[ind["ind"][0]]
-                    connected_nodes = nx.generators.ego_graph(G, node_name, radius=1).nodes()
-                    if self.highlighted_nodes != set(connected_nodes):
-                        self.highlighted_nodes = set(connected_nodes)
+                    connected_nodes = set(nx.generators.ego_graph(G, node_name, radius=1).nodes()) 
+                    if self.selected is not None:
+                       connected_nodes |= set(nx.generators.ego_graph(G, self.selected, radius=1).nodes())
+                    if self.highlighted_nodes != connected_nodes:
+                        self.highlighted_nodes = connected_nodes
                         redraw()
 
                     update_annot(ind)
@@ -88,8 +90,11 @@ class GraphVisualizer:
                         
                 else: # Otherwise, don't draw anything special
                     if vis:
-                        if self.highlighted_nodes != set():
-                            self.highlighted_nodes = set()
+                        connected_nodes = set() 
+                        if self.selected is not None:
+                            connected_nodes |= set(nx.generators.ego_graph(G, self.selected, radius=1).nodes())
+                        if self.highlighted_nodes != connected_nodes:
+                            self.highlighted_nodes = connected_nodes
                             redraw()
                         annot.set_visible(False)
 
