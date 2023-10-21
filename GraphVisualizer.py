@@ -35,6 +35,9 @@ class GraphVisualizer:
                     arrowprops=dict(arrowstyle="->"))
         
         def update_annot(ind):
+            annot = ax.annotate("", xy=(0,0), xytext=(20,20),textcoords="offset points",
+                    bbox=dict(boxstyle="round", fc="w"),
+                    arrowprops=dict(arrowstyle="->"))
             node = ind["ind"][0]
             node_name = list(G.nodes())[node]
             xy = pos[node_name]
