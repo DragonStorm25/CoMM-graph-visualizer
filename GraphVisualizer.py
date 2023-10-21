@@ -7,6 +7,7 @@ class GraphVisualizer:
         self.visual = [] 
         self.labels = {}
         self.highlighted_nodes = set()
+        self.selected = None
           
     def addEdge(self, a, b): 
         """
