@@ -14,7 +14,7 @@ class GraphVisualization:
         G = nx.DiGraph() 
         G.add_edges_from(self.visual) 
         pos = nx.arf_layout(G, a=10)
-        nx.draw(G, pos, with_labels=True)
+        nx.draw(G, pos, with_labels=True, node_size=[len(v) ** 2 * 60 for v in G.nodes()])
         plt.show() 
 
 if __name__ == "__main__":
