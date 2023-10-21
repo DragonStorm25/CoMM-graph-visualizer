@@ -9,14 +9,26 @@ class GraphVisualizer:
         self.highlighted_nodes = set()
           
     def addEdge(self, a, b): 
+        """
+        Add an edge from a to b
+        """
         temp = [a, b] 
         self.visual.append(temp) 
 
     def addLabel(self, a, label_text):
+        """
+        Add a label to node a, this text will be displayed when a is hovered over
+        """
         self.labels[a] = label_text
 
     def visualize(self): 
+        """
+        Create the entire visual representation of the graph, with highlighting and tooltips
+        """
         def redraw():
+            """
+            Redraw the graph. Also updates the axis variable
+            """
             plt.cla()
             ax = plt.gca()
             colors = ['#cc6666' if node_name in self.highlighted_nodes else '#6666cc' for node_name in list(G.nodes)]
