@@ -19,7 +19,6 @@ class GraphVisualizer:
         def redraw():
             plt.cla()
             colors = ['#cc6666' if node_name in self.highlighted_nodes else '#6666cc' for node_name in list(G.nodes)]
-            print(self.highlighted_nodes)
             nx.draw(G, pos, node_color=colors, with_labels=True, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax, edgecolors="#000000")
             plt.draw()
 
