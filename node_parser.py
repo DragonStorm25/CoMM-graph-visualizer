@@ -5,10 +5,14 @@ class GraphVisualization:
    
     def __init__(self): 
         self.visual = [] 
+        self.labels = {}
           
     def addEdge(self, a, b): 
         temp = [a, b] 
         self.visual.append(temp) 
+
+    def addLabel(self, a, label_text):
+        self.labels[a] = label_text
 
     def visualize(self): 
         G = nx.DiGraph() 
@@ -20,6 +24,7 @@ class GraphVisualization:
         annot = ax.annotate("", xy=(0,0), xytext=(20,20),textcoords="offset points",
                     bbox=dict(boxstyle="round", fc="w"),
                     arrowprops=dict(arrowstyle="->"))
+        
         def update_annot(ind):
             node = ind["ind"][0]
             xy = pos[list(G.nodes())[node]]
