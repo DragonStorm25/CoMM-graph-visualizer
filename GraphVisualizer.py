@@ -42,6 +42,8 @@ class GraphVisualizer:
             if event.inaxes == ax:
                 cont, ind = nodes.contains(event)
                 if cont:
+                    node_name = list(G.nodes())[ind["ind"][0]]
+                    connected_nodes = nx.generators.ego_graph(G, node_name, radius=1).nodes()
                     update_annot(ind)
                     annot.set_visible(True)
                     fig.canvas.draw_idle()
