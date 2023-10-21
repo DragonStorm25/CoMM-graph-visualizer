@@ -47,7 +47,7 @@ class GraphVisualizer:
         G = nx.DiGraph() 
         G.add_edges_from(self.visual) 
         # Start with circle layout for consistent generation, then use circle layout to make readable layout
-        circle_pos = nx.circular_layout(G)
+        circle_pos = nx.planar_layout(G)
         pos = nx.arf_layout(G, pos=circle_pos, a=5)
         fig,ax = plt.subplots() 
         nodes = nx.draw_networkx_nodes(G, pos=pos, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax)
