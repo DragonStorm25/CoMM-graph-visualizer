@@ -16,24 +16,23 @@ class GraphVisualizer:
         self.labels[a] = label_text
 
     def visualize(self): 
-        G = nx.DiGraph() 
-        G.add_edges_from(self.visual) 
-        circle_pos = nx.circular_layout(G)
-        pos = nx.arf_layout(G, pos=circle_pos, a=5)
-        colors = ['red' if node_name in self.highlighted_nodes else 'blue' for node_name in list(G.nodes)]
-        fig,ax = plt.subplots() 
-        nodes = nx.draw_networkx_nodes(G, pos=pos, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax)
-        nx.draw(G, pos, node_color=colors, with_labels=True, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax, edgecolors="#000000")
-        annot = ax.annotate("", xy=(0,0), xytext=(20,20),textcoords="offset points",
-                    bbox=dict(boxstyle="round", fc="w"),
-                    arrowprops=dict(arrowstyle="->"))
-        
         def update_colors():
             plt.cla()
             colors = ['red' if node_name in self.highlighted_nodes else 'blue' for node_name in list(G.nodes)]
             print(self.highlighted_nodes)
             nx.draw(G, pos, node_color=colors, with_labels=True, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax, edgecolors="#000000")
             plt.draw()
+
+        G = nx.DiGraph() 
+        G.add_edges_from(self.visual) 
+        circle_pos = nx.circular_layout(G)
+        pos = nx.arf_layout(G, pos=circle_pos, a=5)
+        fig,ax = plt.subplots() 
+        nodes = nx.draw_networkx_nodes(G, pos=pos, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax)
+        update_colors()
+        annot = ax.annotate("", xy=(0,0), xytext=(20,20),textcoords="offset points",
+                    bbox=dict(boxstyle="round", fc="w"),
+                    arrowprops=dict(arrowstyle="->"))
         
         def update_annot(ind):
             node = ind["ind"][0]
