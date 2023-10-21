@@ -13,7 +13,7 @@ class GraphVisualization:
     def visualize(self): 
         G = nx.DiGraph() 
         G.add_edges_from(self.visual) 
-        pos = nx.spring_layout(G, scale=2)
+        pos = nx.spring_layout(G, k=1, seed=10)
         nx.draw(G, pos, with_labels=True)
         plt.show() 
 
