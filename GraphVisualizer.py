@@ -106,4 +106,5 @@ class GraphVisualizer:
 
         # Add hover event to canvas
         fig.canvas.mpl_connect("motion_notify_event", hover)
+        fig.canvas.mpl_connect("button_press_event", click)
         plt.show()
