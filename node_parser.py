@@ -1,5 +1,5 @@
 import networkx as nx
-import matplotlib
+import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
     input_file_path = "nodes.txt"
@@ -11,3 +11,5 @@ if __name__ == "__main__":
     for edge in edge_list:
         edge_tail, edge_head = edge.replace(" ", "").split("->")
         print(f"tail: {edge_tail}, head: {edge_head}")
+        G.add_edge(edge_tail, edge_head)
+    nx.draw(G)
