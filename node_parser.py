@@ -27,11 +27,13 @@ class GraphVisualization:
         
         def update_annot(ind):
             node = ind["ind"][0]
-            xy = pos[list(G.nodes())[node]]
+            node_name = list(G.nodes())[node]
+            xy = pos[node_name]
             annot.xy = xy
-            node_attr = {'node': node}
-            node_attr.update({node: list(G.nodes())[node]})
-            text = '\n'.join(f'{k}: {v}' for k, v in node_attr.items())
+            if node_name in self.labels:
+                text = self.labels[node_name]
+            else:
+                text = "No info"
             annot.set_text(text)
 
         def hover(event):
@@ -60,4 +62,5 @@ if __name__ == "__main__":
         edge_tail, edge_head = edge.replace(" ", "").split("->")
         print(f"tail: {edge_tail}, head: {edge_head}")
         G.addEdge(edge_tail, edge_head)
+    G.addLabel("18.01", "Calculus 1 and 2")
     G.visualize()
