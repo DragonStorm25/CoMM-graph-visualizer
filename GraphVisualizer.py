@@ -101,11 +101,11 @@ class GraphVisualizer:
         def click(event):
             if event.inaxes == ax:
                 cont, ind = nodes.contains(event)
-                if cont: # If mouse is over a node, 
+                if cont: # If node is clicked, highlight it and all children until unselected
                     node_name = list(G.nodes())[ind["ind"][0]]
                     self.selected = node_name
                     self.highlighted_nodes |= set(nx.generators.ego_graph(G, self.selected, radius=1).nodes())
-                else: # Otherwise, 
+                else: # Otherwise, unselect all nodes
                     self.selected = None
                     self.highlighted_nodes = set()
                 redraw()
