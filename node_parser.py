@@ -21,7 +21,7 @@ class GraphVisualization:
         pos = nx.arf_layout(G, pos=circle_pos, a=5)
         fig,ax = plt.subplots() 
         nodes = nx.draw_networkx_nodes(G, pos=pos, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax)
-        nx.draw(G, pos, with_labels=True, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax)
+        nx.draw(G, pos, with_labels=True, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax, edgecolors="#000000")
         annot = ax.annotate("", xy=(0,0), xytext=(20,20),textcoords="offset points",
                     bbox=dict(boxstyle="round", fc="w"),
                     arrowprops=dict(arrowstyle="->"))
