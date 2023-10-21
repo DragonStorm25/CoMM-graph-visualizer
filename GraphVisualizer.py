@@ -98,9 +98,9 @@ class GraphVisualizer:
                 cont, ind = nodes.contains(event)
                 if cont: # If mouse is over a node, 
                     node_name = list(G.nodes())[ind["ind"][0]]
-                    print("click " + node_name)
+                    self.selected = node_name
                 else: # Otherwise, 
-                    print("click empty")
+                    self.selected = None
 
         # Add hover event to canvas
         fig.canvas.mpl_connect("motion_notify_event", hover)
