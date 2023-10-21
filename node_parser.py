@@ -61,7 +61,6 @@ if __name__ == "__main__":
     edge_list = input_file_text.split("\n")
     for edge in edge_list:
         edge_tail, edge_head = edge.replace(" ", "").split("->")
-        print(f"tail: {edge_tail}, head: {edge_head}")
         G.addEdge(edge_tail, edge_head)
     G.addLabel("18.01", "Calculus 1 and 2")
     G.visualize()
