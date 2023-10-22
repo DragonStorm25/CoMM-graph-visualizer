@@ -2,15 +2,15 @@ import GraphVisualizer
 
 if __name__ == "__main__":
     # Read and store file text
-    input_file_path = "nodes.txt"
-    input_file = open(input_file_path, "r")
-    input_file_text = input_file.read()
+    node_file_path = "nodes.txt"
+    node_file = open(node_file_path, "r")
+    node_file_text = node_file.read()
 
     # Create graph visualizer
     G = GraphVisualizer.GraphVisualizer()
 
     # Parse input text and add all edges
-    edge_list = input_file_text.split("\n")
+    edge_list = node_file_text.split("\n")
     for edge in edge_list:
         edge_tail, edge_head = edge.replace(" ", "").split("->")
         G.addEdge(edge_tail, edge_head)
