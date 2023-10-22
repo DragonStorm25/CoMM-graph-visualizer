@@ -14,6 +14,11 @@ if __name__ == "__main__":
     for edge in edge_list:
         edge_tail, edge_head = edge.replace(" ", "").split("->")
         G.addEdge(edge_tail, edge_head)
+
+    tooltip_file_path = "tooltip.txt"
+    tooltip_file = open(tooltip_file_path, "r")
+    tooltip_file_text = tooltip_file.read()
+
     G.addLabel("18.01", "Calculus 1 and 2")
 
     # Visualize graph
