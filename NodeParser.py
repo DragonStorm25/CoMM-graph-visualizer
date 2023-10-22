@@ -19,7 +19,10 @@ if __name__ == "__main__":
     tooltip_file = open(tooltip_file_path, "r")
     tooltip_file_text = tooltip_file.read()
 
-    G.addLabel("18.01", "Calculus 1 and 2")
+    tooltip_list = tooltip_file_text.split("\n")
+    for tooltip in tooltip_list:
+        node, text = tooltip.split(" = ")
+        G.addLabel(node, text)
 
     # Visualize graph
     G.visualize()
