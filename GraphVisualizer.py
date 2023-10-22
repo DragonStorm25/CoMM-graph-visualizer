@@ -59,6 +59,9 @@ class GraphVisualizer:
                     arrowprops=dict(arrowstyle="->"))
         
         def update_annot(ind):
+            """
+            Update the tooltip of node number ind.
+            """
             annot = ax.annotate("", xy=(0,0), xytext=(20,20),textcoords="offset points",
                     bbox=dict(boxstyle="round", fc="w"),
                     arrowprops=dict(arrowstyle="->"))
@@ -73,6 +76,9 @@ class GraphVisualizer:
             annot.set_text(text)
 
         def hover(event):
+            """
+            Update highlighted nodes and tooltip when hovered.
+            """
             vis = annot.get_visible()
             if event.inaxes == ax:
                 cont, ind = nodes.contains(event)
@@ -99,6 +105,9 @@ class GraphVisualizer:
                         annot.set_visible(False)
 
         def click(event):
+            """
+            Update selected node when clicked.
+            """
             if event.inaxes == ax:
                 cont, ind = nodes.contains(event)
                 if cont: # If node is clicked, highlight it and all children until unselected
