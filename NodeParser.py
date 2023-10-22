@@ -1,13 +1,13 @@
 import GraphVisualizer
 
 if __name__ == "__main__":
+    # Create graph visualizer
+    G = GraphVisualizer.GraphVisualizer()
+
     # Read and store file text
     node_file_path = "nodes.txt"
     node_file = open(node_file_path, "r")
     node_file_text = node_file.read()
-
-    # Create graph visualizer
-    G = GraphVisualizer.GraphVisualizer()
 
     # Parse input text and add all edges
     edge_list = node_file_text.split("\n")
