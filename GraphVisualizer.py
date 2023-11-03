@@ -16,7 +16,7 @@ class GraphVisualizer:
         """
         temp = [a, b] 
         self.visual.append(temp) 
-        self.edge_info[(a, b)] = {'style': style, 'color': color}
+        self.edge_info[set([a, b])] = {'style': style, 'color': color}
 
     def addLabel(self, a, label_text):
         """
