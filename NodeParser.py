@@ -18,6 +18,9 @@ if __name__ == "__main__":
         edge_info_pieces = edge.strip().split(" ")
         edge_head = edge_info_pieces[-1]
         edge_tail = edge_info_pieces[-3] # Skip -2, as that's the arrow
+        edge_style = edge_info_pieces[0]
+        if edge_style == edge_head or edge_style not in ['*', '?', '!']: # Default to required (*) if no style or incorrect style
+            edge_style = "*"
         G.addEdge(edge_tail, edge_head)
 
     # Read and store tooltip text
