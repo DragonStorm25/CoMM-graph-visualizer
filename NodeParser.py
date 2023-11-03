@@ -9,7 +9,6 @@ if __name__ == "__main__":
     node_file = open(node_file_path, "r")
     node_file_text = node_file.read()
 
-    # TODO Add options for required (*), optional (?), and helpful (!) links
     # TODO Add names OR groups and assign unique color to each group
 
     # Parse node text and add all edges
@@ -18,7 +17,7 @@ if __name__ == "__main__":
         edge_info_pieces = edge.strip().split(" ")
         edge_head = edge_info_pieces[-1]
         edge_tail = edge_info_pieces[-3] # Skip -2, as that's the arrow
-        edge_style = edge_info_pieces[0]
+        edge_style = edge_info_pieces[0] # Should only be required (*), optional (?), and helpful (!), unless not specified
         edge_group_name = edge_info_pieces[1]
         if edge_style == edge_head or edge_style not in ['*', '?', '!']: # Default to required (*) if no style or incorrect style
             edge_style = "*"
