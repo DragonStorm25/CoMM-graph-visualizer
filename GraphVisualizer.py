@@ -5,16 +5,18 @@ class GraphVisualizer:
    
     def __init__(self): 
         self.visual = [] 
+        self.edge_info = {}
         self.labels = {}
         self.highlighted_nodes = set()
         self.selected = None
           
-    def addEdge(self, a, b): 
+    def addEdge(self, a, b, style="solid", color="black"): 
         """
         Add an edge from a to b
         """
         temp = [a, b] 
         self.visual.append(temp) 
+        self.edge_info[(a, b)] = {'style': style, 'color': color}
 
     def addLabel(self, a, label_text):
         """
