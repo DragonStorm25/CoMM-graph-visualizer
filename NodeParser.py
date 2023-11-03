@@ -10,6 +10,11 @@ if __name__ == "__main__":
     node_file_text = node_file.read()
 
     # TODO Add names OR groups and assign unique color to each group
+    char_to_style = {
+        '*': 'solid',
+        '?': 'dashed',
+        '!': 'dotted'
+    }
 
     # Parse node text and add all edges
     edge_list = node_file_text.split("\n")
@@ -24,7 +29,7 @@ if __name__ == "__main__":
         if edge_group_name == edge_head or edge_group_name == '->': # No group name specified
             edge_group_name = ""
         # print(f'{edge_head} -> {edge_tail}, style: {edge_style}, group: {edge_group_name}')
-        G.addEdge(edge_tail, edge_head)
+        G.addEdge(edge_tail, edge_head, style=char_to_style[edge_style])
 
     # Read and store tooltip text
     tooltip_file_path = "tooltip.txt"
