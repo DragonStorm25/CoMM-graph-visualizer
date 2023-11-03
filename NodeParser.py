@@ -34,10 +34,10 @@ if __name__ == "__main__":
         edge_group_name = edge_info_pieces[1]
         if edge_style == edge_head or edge_style not in ['*', '?', '!']: # Default to required (*) if no style or incorrect style
             edge_style = "*"
-        if edge_group_name == edge_head or edge_group_name == '->': # No group name specified
+        if edge_group_name == edge_head or edge_group_name == '->' or edge_group_name not in group_colors: # No group name specified
             edge_group_name = ""
         # print(f'{edge_head} -> {edge_tail}, style: {edge_style}, group: {edge_group_name}')
-        G.addEdge(edge_tail, edge_head, style=char_to_style[edge_style])
+        G.addEdge(edge_tail, edge_head, style=char_to_style[edge_style], color=group_colors[edge_group_name])
 
     # Read and store tooltip text
     tooltip_file_path = "tooltip.txt"
