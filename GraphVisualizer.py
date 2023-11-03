@@ -16,7 +16,7 @@ class GraphVisualizer:
         """
         temp = [a, b] 
         self.visual.append(temp) 
-        self.edge_info[set([a, b])] = {'style': style, 'color': color}
+        self.edge_info[frozenset([a, b])] = {'style': style, 'color': color}
 
     def addLabel(self, a, label_text):
         """
@@ -44,7 +44,7 @@ class GraphVisualizer:
             node_colors = ['#cc6666' if node_name in self.highlighted_nodes else '#6666cc99' for node_name in list(G.nodes)]
             # Set colors of edges depending on groups
             edges = G.edges()
-            edge_colors = [self.edge_info[set([u, v])] for u,v in edges]
+            edge_colors = [self.edge_info[frozenset([u, v])] for u,v in edges]
             # Draw graph
             nx.draw(G, pos, node_color=node_colors, with_labels=True, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax, edgecolors="#000000")
             plt.draw()
