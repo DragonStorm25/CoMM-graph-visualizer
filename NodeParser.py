@@ -15,7 +15,9 @@ if __name__ == "__main__":
     # Parse node text and add all edges
     edge_list = node_file_text.split("\n")
     for edge in edge_list:
-        edge_tail, edge_head = edge.replace(" ", "").split("->")
+        edge_info_pieces = edge.strip().split(" ")
+        edge_head = edge_info_pieces[-1]
+        edge_tail = edge_info_pieces[-3] # Skip -2, as that's the arrow
         G.addEdge(edge_tail, edge_head)
 
     # Read and store tooltip text
