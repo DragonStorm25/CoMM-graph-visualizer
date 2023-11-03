@@ -19,8 +19,11 @@ if __name__ == "__main__":
         edge_head = edge_info_pieces[-1]
         edge_tail = edge_info_pieces[-3] # Skip -2, as that's the arrow
         edge_style = edge_info_pieces[0]
+        edge_group_name = edge_info_pieces[1]
         if edge_style == edge_head or edge_style not in ['*', '?', '!']: # Default to required (*) if no style or incorrect style
             edge_style = "*"
+        if edge_group_name == edge_head: # No group name specified
+            edge_group_name = ""
         G.addEdge(edge_tail, edge_head)
 
     # Read and store tooltip text
