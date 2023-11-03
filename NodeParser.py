@@ -16,6 +16,8 @@ if __name__ == "__main__":
         '!': 'dotted'
     }
 
+    group_colors = ['red', 'yellow', 'green', 'blue']
+
     # Parse node text and add all edges
     edge_list = node_file_text.split("\n")
     for edge in edge_list:
