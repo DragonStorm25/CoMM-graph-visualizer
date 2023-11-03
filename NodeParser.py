@@ -9,6 +9,9 @@ if __name__ == "__main__":
     node_file = open(node_file_path, "r")
     node_file_text = node_file.read()
 
+    # TODO Add options for required (*), optional (?), and helpful (!) links
+    # TODO Add names OR groups and assign unique color to each group
+
     # Parse node text and add all edges
     edge_list = node_file_text.split("\n")
     for edge in edge_list:
