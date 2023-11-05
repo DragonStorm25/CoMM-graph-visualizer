@@ -9,7 +9,6 @@ if __name__ == "__main__":
     node_file = open(node_file_path, "r")
     node_file_text = node_file.read()
 
-    # TODO Add names OR groups and assign unique color to each group
     char_to_style = {
         '*': 'solid',
         '?': 'dashed',
