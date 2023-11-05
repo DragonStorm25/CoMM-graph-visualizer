@@ -17,11 +17,11 @@ if __name__ == "__main__":
     }
 
     group_colors = {
-        '': 'black',
-        'a': 'red', 
-        'b': 'yellow', 
-        'c': 'green', 
-        'd': 'blue'
+        '': '#000000',
+        'a': '#ff0000', 
+        'b': '#ffff00', 
+        'c': '#00ff00', 
+        'd': '#0000ff'
     }
 
     # Parse node text and add all edges
