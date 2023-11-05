@@ -45,8 +45,10 @@ class GraphVisualizer:
             # Set colors of edges depending on groups
             edges = G.edges()
             edge_colors = [self.edge_info[frozenset([u, v])]['color'] for u,v in edges]
+            # Set styles of edges
+            edge_styles = [self.edge_info[frozenset([u, v])]['style'] for u,v in edges]
             # Draw graph
-            nx.draw(G, pos, edge_color=edge_colors, node_color=node_colors, with_labels=True, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax, edgecolors="#000000")
+            nx.draw(G, pos, edge_color=edge_colors, node_color=node_colors, style=edge_styles, with_labels=True, node_size=[len(v) ** 2 * 60 for v in G.nodes()], ax=ax, edgecolors="#000000")
             plt.draw()
 
         # Create graph and add all edges
